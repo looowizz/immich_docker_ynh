@@ -6,8 +6,8 @@ help: ## List all commands
 ###################################################################################################
 
 build: ## Update/Build docker services
-	./compose.sh pull --parallel
-	./compose.sh build --pull --parallel
+	./compose.sh pull
+	./compose.sh build --pull
 
 up: build ## Start docker containers
 	./compose.sh up -d
@@ -32,7 +32,7 @@ shell-app: ## go into a interactive bash shell in App container
 	./compose.sh exec app /bin/bash
 
 run-shell-app: ## Build and start the App container and go into shell
-	./compose.sh build --pull --parallel app
+	./compose.sh build --pull app
 	./compose.sh run --entrypoint '/bin/bash' app
 
 ###################################################################################################
