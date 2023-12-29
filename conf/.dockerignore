@@ -1,0 +1,8 @@
+*
+!requirements.txt
+!app-entrypoint.sh
+!django-settings.py
+!gunicorn.conf.py
+!wsgi.py
+!manage.py
+!postgres-init.sh
