@@ -6,13 +6,14 @@ import multiprocessing
 
 bind = '0.0.0.0:8000'
 
+
 # https://docs.gunicorn.org/en/latest/settings.html#workers
-# workers = multiprocessing.cpu_count() * 2 + 1
-workers = 2
+workers = multiprocessing.cpu_count() * 2 + 1
+
 
 # https://docs.gunicorn.org/en/latest/settings.html#logging
-# loglevel = 'info'
-loglevel = 'debug'
+loglevel = '__LOG_LEVEL__'
+
 
 # https://docs.gunicorn.org/en/latest/settings.html#logging
 accesslog = '-'  # to stdout

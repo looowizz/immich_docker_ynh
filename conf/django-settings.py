@@ -124,7 +124,7 @@ SERVER_EMAIL = ADMIN_EMAIL
 # List of URLs your site is supposed to serve
 ALLOWED_HOSTS = ('0.0.0.0',)  # Docker
 
-SECURE_SSL_REDIRECT=False
+SECURE_SSL_REDIRECT = False
 
 # _____________________________________________________________________________
 # Configuration for caching
