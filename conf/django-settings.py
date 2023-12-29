@@ -31,6 +31,7 @@ PATH_URL = '__PATH__'
 PATH_URL = PATH_URL.strip('/')
 
 YNH_CURRENT_HOST = '__YNH_CURRENT_HOST__'  # YunoHost main domain from: /etc/yunohost/current_host
+ALLOWED_HOSTS = (YNH_CURRENT_HOST,)
 
 # -----------------------------------------------------------------------------
 # config_panel.toml settings:
@@ -120,9 +121,6 @@ SERVER_EMAIL = ADMIN_EMAIL
 
 # Default email address to use for various automated correspondence from
 # the site managers. Used for registration emails.
-
-# List of URLs your site is supposed to serve
-ALLOWED_HOSTS = ('0.0.0.0',)  # Docker
 
 SECURE_SSL_REDIRECT = False
 
