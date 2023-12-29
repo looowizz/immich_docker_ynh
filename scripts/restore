@@ -10,6 +10,14 @@ source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+# SETUP USER
+#=================================================
+ynh_script_progression --message="Setup user..."
+
+# Add the app system user to "docker" user group:
+usermod -aG docker $app
+
+#=================================================
 # STANDARD RESTORATION STEPS
 #=================================================
 # RESTORE THE NGINX CONFIGURATION
