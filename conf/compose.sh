@@ -4,4 +4,6 @@ source common.env
 
 set -ex
 
-exec docker compose "$@"
+# Compose v2 is always accessible as docker compose!
+# But Debian bullseye contains v1
+exec docker-compose "$@"
