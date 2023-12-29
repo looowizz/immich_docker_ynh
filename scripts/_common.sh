@@ -39,5 +39,10 @@ myynh_fix_file_permissions() {
         # /home/yunohost.app/$app/
         chown -c -R "$app:" "$data_dir"
         chmod -c o-rwx "$data_dir"
+
+        chmod -c +x $data_dir/app-entrypoint.sh
+        chmod -c +x $data_dir/compose.sh
+        chmod -c +x $data_dir/manage.py
+        chmod -c +x $data_dir/postgres-init.sh
     )
 }
