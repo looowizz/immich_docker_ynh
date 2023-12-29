@@ -24,8 +24,6 @@ from django_example.settings.prod import *  # noqa:F401,F403 isort:skip
 from django_yunohost_integration.base_settings import LOGGING  # noqa:F401 isort:skip
 
 
-
-
 __CWD_PATH=Path.cwd()
 
 
@@ -130,19 +128,18 @@ SECURE_SSL_REDIRECT=False
 
 # _____________________________________________________________________________
 # Configuration for caching
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django_redis.cache.RedisCache',
-#         'LOCATION': 'redis://127.0.0.1:6379/__REDIS_DB__',
-#         # If redis is running on same host as Django Example, you might
-#         # want to use unix sockets instead:
-#         # 'LOCATION': 'unix:///var/run/redis/redis.sock?db=1',
-#         'OPTIONS': {
-#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-#         },
-#         'KEY_PREFIX': '__APP__',
-#     },
-# }
+REDIS_HOST = os.environ['REDIS_HOST']  # "redis" from common.env
+REDIS_PORT = os.environ['REDIS_PORT']  # 6379 from common.env
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': f'redis://{REDIS_HOST}:{REDIS_PORT}/',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        },
+        'KEY_PREFIX': '__APP__',
+    },
+}
 
 # _____________________________________________________________________________
 # Static files (CSS, JavaScript, Images)

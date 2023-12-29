@@ -1,6 +1,6 @@
 [Unit]
 Description=__APP__ server
-After=redis.service postgresql.service
+After=containerd.service docker.service nginx.service
 
 [Service]
 User=__APP__
