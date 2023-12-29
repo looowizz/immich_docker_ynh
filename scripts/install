@@ -61,14 +61,6 @@ ynh_add_config --template="systemd.service" --destination="$data_dir/systemd.ser
 ynh_add_config --template="wsgi.py" --destination="$data_dir/wsgi.py"
 
 #=================================================
-# SETUP USER
-#=================================================
-ynh_script_progression --message="Setup user..."
-
-# Add the app system user to "docker" user group:
-usermod -aG docker $app
-
-#=================================================
 # INTEGRATE SERVICE IN YUNOHOST
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..."
@@ -78,10 +70,11 @@ yunohost service add $app
 #=================================================
 # GENERIC FINALIZATION
 #=================================================
-# SECURE FILES AND DIRECTORIES
-#=================================================
 ynh_script_progression --message="Set file permissions..."
 myynh_fix_file_permissions
+
+ynh_script_progression --message="Build '$app' docker images..." --weight=20
+myynh_setup_docker
 
 #=================================================
 # SETUP SYSTEMD

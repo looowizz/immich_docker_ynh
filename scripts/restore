@@ -10,14 +10,6 @@ source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# SETUP USER
-#=================================================
-ynh_script_progression --message="Setup user..."
-
-# Add the app system user to "docker" user group:
-usermod -aG docker $app
-
-#=================================================
 # STANDARD RESTORATION STEPS
 #=================================================
 # RESTORE THE NGINX CONFIGURATION
@@ -34,8 +26,14 @@ ynh_script_progression --message="Restoring $app  main directory..."
 ynh_restore_file --origin_path="$install_dir"
 ynh_restore_file --origin_path="$data_dir"
 
+#=================================================
+# GENERIC FINALIZATION
+#=================================================
 ynh_script_progression --message="Set file permissions..."
 myynh_fix_file_permissions
+
+ynh_script_progression --message="Build '$app' docker images..." --weight=20
+myynh_setup_docker
 
 #=================================================
 # RESTORE SYSTEMD
@@ -52,16 +50,6 @@ ynh_script_progression --message="Integrating service in YunoHost..."
 
 yunohost service add $app
 
-#=================================================
-# GENERIC FINALIZATION
-#=================================================
-# SECURE FILES AND DIRECTORIES
-#=================================================
-ynh_script_progression --message="Set file permissions..."
-myynh_fix_file_permissions
-
-#=================================================
-# GENERIC FINALIZATION
 #=================================================
 # START SYSTEMD SERVICES
 #=================================================

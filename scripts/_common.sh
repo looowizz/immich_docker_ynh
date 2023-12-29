@@ -46,3 +46,15 @@ myynh_fix_file_permissions() {
         chmod -c +x $data_dir/postgres-init.sh
     )
 }
+
+myynh_setup_docker() {
+    (
+        set -x
+
+        # Add the app system user to "docker" user group:
+        usermod -aG docker $app
+
+        cd "$data_dir/"
+        make build
+    )
+}
