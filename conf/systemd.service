@@ -7,7 +7,8 @@ User=__APP__
 Group=__APP__
 WorkingDirectory=__DATA_DIR__/
 
-ExecStart=make up
+# Will result in docker down + docker up
+ExecStart=make restart
 
 StandardOutput=syslog
 StandardError=syslog
