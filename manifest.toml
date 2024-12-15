@@ -99,3 +99,10 @@ ram.runtime = "500M" # **estimate** minimum ram requirement. e.g. 50M, 400M, 1G,
     [resources.ports]
     # https://yunohost.org/en/packaging_apps_resources#ports
     # This will pick a random port for reverse-proxying and store it as the $port setting
+
+    [resources.apt]
+    # https://yunohost.org/en/packaging_apps_resources#apt
+    # This will automatically install/uninstall the following apt packages
+    extras.docker.repo = "deb https://download.docker.com/linux/debian stable main"
+    extras.docker.key = "https://download.docker.com/linux/debian/gpg"
+    extras.docker.packages = ["docker-ce", "docker-ce-cli", "containerd.io", "docker-buildx-plugin", "docker-compose-plugin"]
